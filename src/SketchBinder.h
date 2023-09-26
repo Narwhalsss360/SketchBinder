@@ -16,23 +16,25 @@ enum SketchBindTypes
 	bind_loop_post
 };
 
-Callable* __sketch_bindings__[4][MAX_SKETCH_BINDINGS];
+Invokable<void>* __sketch_bindings__[4][MAX_SKETCH_BINDINGS];
 byte __sketch_binding_count__[4];
 
-bool addInternalSketchBinding(SketchBindTypes bindType, Callable* callable)
+bool addInternalSketchBinding(SketchBindTypes bindType, Invokable<void>* invokable)
 {
-	if (!callable)
+	if (!invokable)
+		return false;
+	if (!invokable->valid())
 		return false;
 	if (__sketch_binding_count__[bindType] == MAX_SKETCH_BINDINGS)
 		return false;
-	__sketch_bindings__[bindType][__sketch_binding_count__[bindType]] = callable;
+	__sketch_bindings__[bindType][__sketch_binding_count__[bindType]] = invokable;
 	__sketch_binding_count__[bindType]++;
 }
 
-void removeInternalSketchBinding(SketchBindTypes bindType, Callable* callable)
+void removeInternalSketchBinding(SketchBindTypes bindType, Invokable<void>* invokable)
 {
 	for (byte i = 0; i < __sketch_binding_count__[bindType]; i++)
-		if (__sketch_bindings__[bindType][i] == callable)
+		if (__sketch_bindings__[bindType][i] == invokable)
 		{
 			for (byte iShift = i; iShift < __sketch_binding_count__[bindType] - 1; iShift++)
 				__sketch_bindings__[bindType][iShift] = __sketch_bindings__[bindType][iShift + 1];

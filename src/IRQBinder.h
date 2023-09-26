@@ -11,7 +11,7 @@
 
 #define INVOKE_IRQ(irq) if (irq < IRQ_COUNT) __irq_handlers__[irq]()
 
-Callable* __irq_bindings__[IRQ_COUNT][MAX_IRQ_BINDINGS];
+Invokable<void>* __irq_bindings__[IRQ_COUNT][MAX_IRQ_BINDINGS];
 byte __irq_binding_count__[IRQ_COUNT];
 void (*__irq_handlers__[IRQ_COUNT])() =
 {
@@ -27,7 +27,7 @@ void (*__irq_handlers__[IRQ_COUNT])() =
 	}
 };
 
-int addInternalIRQBinding(byte irq, Callable* callable)
+int addInternalIRQBinding(byte irq, Invokable<void>* callable)
 {
 	if (irq >= IRQ_COUNT)
 		return 1;
@@ -38,7 +38,7 @@ int addInternalIRQBinding(byte irq, Callable* callable)
 	return 0;
 }
 
-int removeInternalIRQBinding(byte irq, Callable* callable)
+int removeInternalIRQBinding(byte irq, Invokable<void>* callable)
 {
 	if (irq >= IRQ_COUNT)
 		return 1;

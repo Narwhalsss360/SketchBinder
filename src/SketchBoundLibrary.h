@@ -11,11 +11,11 @@ enum SketchBindTypes
     bind_loop_post
 };
 
-bool addInternalSketchBinding(SketchBindTypes bindType, Callable* callable); __attribute__((weak));
-void removeInternalSketchBinding(SketchBindTypes bindType, Callable* callable); __attribute__((weak));
+bool addInternalSketchBinding(SketchBindTypes bindType, Invokable<void>* callable); __attribute__((weak));
+void removeInternalSketchBinding(SketchBindTypes bindType, Invokable<void>* callable); __attribute__((weak));
 #endif
 
-static bool addSketchBinding(SketchBindTypes bindType, Callable* callable)
+static bool addSketchBinding(SketchBindTypes bindType, Invokable<void>* callable)
 {
     if (addInternalSketchBinding)
         return addInternalSketchBinding(bindType, callable);
@@ -23,7 +23,7 @@ static bool addSketchBinding(SketchBindTypes bindType, Callable* callable)
         return false;
 }
 
-static void removeSketchBinding(SketchBindTypes bindType, Callable* callable)
+static void removeSketchBinding(SketchBindTypes bindType, Invokable<void>* callable)
 {
     if (removeInternalSketchBinding)
         removeInternalSketchBinding(bindType, callable);
