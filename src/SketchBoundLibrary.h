@@ -15,17 +15,24 @@ bool addInternalSketchBinding(SketchBindTypes bindType, Invokable<void>* callabl
 void removeInternalSketchBinding(SketchBindTypes bindType, Invokable<void>* callable); __attribute__((weak));
 #endif
 
-static bool addSketchBinding(SketchBindTypes bindType, Invokable<void>* callable)
+/// @brief Bind a function to a sketch function.
+/// @param bindType Where
+/// @param invokable invokable
+/// @return `bool` true if successfully bound
+static bool addSketchBinding(SketchBindTypes bindType, Invokable<void>* invokable)
 {
     if (addInternalSketchBinding)
-        return addInternalSketchBinding(bindType, callable);
+        return addInternalSketchBinding(bindType, invokable);
     else
         return false;
 }
 
-static void removeSketchBinding(SketchBindTypes bindType, Invokable<void>* callable)
+/// @brief Remove a function from a sketch function
+/// @param bindType Where
+/// @param invokable invokable
+static void removeSketchBinding(SketchBindTypes bindType, Invokable<void>* invokable)
 {
     if (removeInternalSketchBinding)
-        removeInternalSketchBinding(bindType, callable);
+        removeInternalSketchBinding(bindType, invokable);
 }
 #endif

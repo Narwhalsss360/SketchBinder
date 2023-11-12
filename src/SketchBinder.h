@@ -19,6 +19,10 @@ enum SketchBindTypes
 Invokable<void>* __sketch_bindings__[4][MAX_SKETCH_BINDINGS];
 byte __sketch_binding_count__[4];
 
+/// @brief Bind a function to a sketch function.
+/// @param bindType Where
+/// @param invokable invokable
+/// @return `bool` true if successfully bound
 bool addInternalSketchBinding(SketchBindTypes bindType, Invokable<void>* invokable)
 {
 	if (!invokable)
@@ -31,6 +35,9 @@ bool addInternalSketchBinding(SketchBindTypes bindType, Invokable<void>* invokab
 	__sketch_binding_count__[bindType]++;
 }
 
+/// @brief Remove a function from a sketch function
+/// @param bindType Where
+/// @param invokable invokable
 void removeInternalSketchBinding(SketchBindTypes bindType, Invokable<void>* invokable)
 {
 	for (byte i = 0; i < __sketch_binding_count__[bindType]; i++)
@@ -42,7 +49,10 @@ void removeInternalSketchBinding(SketchBindTypes bindType, Invokable<void>* invo
 		}
 }
 
+/// @brief User setup
 void __setup__();
+
+/// @brief User loop
 void __loop__();
 
 void setup()
