@@ -1,0 +1,25 @@
+SketchBinder                    LITERAL1
+SketchBoundLibrary              LITERAL1
+IRQBinder                       LITERAL1
+
+MAX_SKETCH_BINDINGS             LITERAL1
+
+SketchBindTypes                 LITERAL1
+bind_setup                      LITERAL1
+bind_loop_post                  LITERAL1
+bind_loop                       LITERAL1
+bind_loop_post                  LITERAL1
+
+addInternalSketchBinding        KEYWORD2
+removeInternalSketchBinding     KEYWORD2
+
+addSketchBinding                KEYWORD2
+removeSketchBinding             KEYWORD2
+
+IRQ_COUNT                       LITERAL1
+MAX_IRQ_BINDINGS                LITERAL1
+
+INVOKE_IRQ                      LITERAL1
+
+addInternalIRQBinding           KEYWORD2
+removeInternalIRQBinding        KEYWORD2

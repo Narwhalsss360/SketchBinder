@@ -27,7 +27,7 @@ static bool addSketchBinding(SketchBindTypes bindType, Invokable<void>* invokabl
         return false;
 }
 
-/// @brief Remove a function from a sketch function
+/// @brief Remove a function from a sketch functiond
 /// @param bindType Where
 /// @param invokable invokable
 static void removeSketchBinding(SketchBindTypes bindType, Invokable<void>* invokable)
