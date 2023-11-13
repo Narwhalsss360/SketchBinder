@@ -1,5 +1,6 @@
 #if !defined(SketchBoundLibrary_h)
 #define SketchBoundLibrary_h
+
 #ifndef SketchBinder_h
 #include <Callables.h>
 
@@ -35,4 +36,5 @@ static void removeSketchBinding(SketchBindTypes bindType, Invokable<void>* invok
     if (removeInternalSketchBinding)
         removeInternalSketchBinding(bindType, invokable);
 }
+
 #endif
