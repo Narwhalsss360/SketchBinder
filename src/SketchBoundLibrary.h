@@ -11,8 +11,8 @@ enum SketchBindTypes
     bind_loop_post
 };
 
-bool addInternalSketchBinding(SketchBindTypes bindType, Invokable<void>* callable); __attribute__((weak));
-void removeInternalSketchBinding(SketchBindTypes bindType, Invokable<void>* callable); __attribute__((weak));
+bool addInternalSketchBinding(SketchBindTypes bindType, Invokable<void>* callable) __attribute__((weak));
+void removeInternalSketchBinding(SketchBindTypes bindType, Invokable<void>* callable) __attribute__((weak));
 #endif
 
 /// @brief Bind a function to a sketch function.

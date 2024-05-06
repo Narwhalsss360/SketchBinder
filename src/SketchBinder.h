@@ -33,6 +33,7 @@ bool addInternalSketchBinding(SketchBindTypes bindType, Invokable<void>* invokab
 		return false;
 	__sketch_bindings__[bindType][__sketch_binding_count__[bindType]] = invokable;
 	__sketch_binding_count__[bindType]++;
+	return true;
 }
 
 /// @brief Remove a function from a sketch function
@@ -49,31 +50,32 @@ void removeInternalSketchBinding(SketchBindTypes bindType, Invokable<void>* invo
 		}
 }
 
-/// @brief User setup
-void __setup__();
-
-/// @brief User loop
-void __loop__();
-
-void setup()
+namespace binds
 {
-	for (byte i = 0; i < __sketch_binding_count__[bind_setup]; i++)
-		__sketch_bindings__[bind_setup][i]->invoke();
-	__setup__();
-	for (byte i = 0; i < __sketch_binding_count__[bind_setup_post]; i++)
-		__sketch_bindings__[bind_setup_post][i]->invoke();
-}
+	void setup()
+	{
+		for (byte i = 0; i < __sketch_binding_count__[bind_setup]; i++)
+			__sketch_bindings__[bind_setup][i]->invoke();
+	}
 
-void loop()
-{
-	for (byte i = 0; i < __sketch_binding_count__[bind_loop]; i++)
-		__sketch_bindings__[bind_loop][i]->invoke();
-	__loop__();
-	for (byte i = 0; i < __sketch_binding_count__[bind_loop_post]; i++)
-		__sketch_bindings__[bind_loop_post][i]->invoke();
-}
+	void setup_post()
+	{
+		for (byte i = 0; i < __sketch_binding_count__[bind_setup_post]; i++)
+			__sketch_bindings__[bind_setup_post][i]->invoke();
+	}
 
-#define setup __setup__
-#define loop __loop__
+	void loop()
+	{
+		for (byte i = 0; i < __sketch_binding_count__[bind_loop]; i++)
+			__sketch_bindings__[bind_loop][i]->invoke();
+	}
+
+	void loop_post()
+	{
+		for (byte i = 0; i < __sketch_binding_count__[bind_loop_post]; i++)
+			__sketch_bindings__[bind_loop_post][i]->invoke();
+	}
+
+}
 
 #endif
