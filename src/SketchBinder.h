@@ -75,7 +75,6 @@ namespace binds
 		for (byte i = 0; i < __sketch_binding_count__[bind_loop_post]; i++)
 			__sketch_bindings__[bind_loop_post][i]->invoke();
 	}
-
 }
 
 #endif
