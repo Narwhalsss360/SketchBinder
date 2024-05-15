@@ -52,7 +52,7 @@ void removeInternalSketchBinding(SketchBindTypes bindType, Invokable<void>* invo
 
 namespace binds
 {
-	void setup()
+	void setup_pre()
 	{
 		for (byte i = 0; i < __sketch_binding_count__[bind_setup]; i++)
 			__sketch_bindings__[bind_setup][i]->invoke();
@@ -64,7 +64,7 @@ namespace binds
 			__sketch_bindings__[bind_setup_post][i]->invoke();
 	}
 
-	void loop()
+	void loop_pre()
 	{
 		for (byte i = 0; i < __sketch_binding_count__[bind_loop]; i++)
 			__sketch_bindings__[bind_loop][i]->invoke();

@@ -10,14 +10,14 @@ void __loop__();
 
 void setup()
 {
-    binds::setup();
+    binds::setup_pre();
     __setup__();
     binds::setup_post();
 }
 
 void loop()
 {
-    binds::loop();
+    binds::loop_pre();
     __loop__();
     binds::loop_post();
 }
