@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include <Callables.h>
+#include "Binds.h"
 
 #ifndef MAX_SKETCH_BINDINGS
 #define MAX_SKETCH_BINDINGS 16
@@ -18,6 +19,7 @@ enum SketchBindTypes
 
 Invokable<void>* __sketch_bindings__[4][MAX_SKETCH_BINDINGS];
 byte __sketch_binding_count__[4];
+bool __ran_setup__ = false;
 
 /// @brief Bind a function to a sketch function.
 /// @param bindType Where
@@ -54,6 +56,7 @@ namespace binds
 {
 	void setup_pre()
 	{
+		__ran_setup__ = false;
 		for (byte i = 0; i < __sketch_binding_count__[bind_setup]; i++)
 			__sketch_bindings__[bind_setup][i]->invoke();
 	}
@@ -62,6 +65,7 @@ namespace binds
 	{
 		for (byte i = 0; i < __sketch_binding_count__[bind_setup_post]; i++)
 			__sketch_bindings__[bind_setup_post][i]->invoke();
+		__ran_setup__ = true;
 	}
 
 	void loop_pre()

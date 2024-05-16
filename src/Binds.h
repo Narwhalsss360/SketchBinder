@@ -10,6 +10,8 @@ namespace binds
 	void loop_pre();
 
 	void loop_post();
+
+	bool ranSetup();
 }
 
 #endif
