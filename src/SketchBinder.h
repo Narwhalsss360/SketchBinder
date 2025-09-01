@@ -29,8 +29,6 @@ bool addInternalSketchBinding(SketchBindTypes bindType, Invokable<void>* invokab
 {
 	if (!invokable)
 		return false;
-	if (!invokable->valid())
-		return false;
 	if (__sketch_binding_count__[bindType] == MAX_SKETCH_BINDINGS)
 		return false;
 	__sketch_bindings__[bindType][__sketch_binding_count__[bindType]] = invokable;
