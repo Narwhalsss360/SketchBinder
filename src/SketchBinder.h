@@ -6,7 +6,7 @@
 #include "Binds.h"
 
 #ifndef MAX_SKETCH_BINDINGS
-#define MAX_SKETCH_BINDINGS 16
+#define MAX_SKETCH_BINDINGS 6
 #endif
 
 enum SketchBindTypes
